@@ -1,0 +1,28 @@
+AllCops:
+  TargetRubyVersion: 2.3
+Rails:
+  Enabled: true
+Rails/TimeZone:
+  Enabled: false
+Metrics:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/AlignHash:
+  Enabled: false
+Style/IndentHash:
+  Enabled: false
+Style/TrailingCommaInLiteral:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/AlignParameters:
+  Enabled: false
+Style/GlobalVars:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false

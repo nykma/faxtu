@@ -20,6 +20,10 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # NEED_MODIFY if you're not using docker-compose
+  host: 127.0.0.1
+  port: 35432
+  username: postgres
 
 development:
   <<: *default
@@ -81,5 +85,5 @@ test:
 production:
   <<: *default
   database: Faxtu_production
-  username: Faxtu
+  username: faxtu
   password: <%= ENV['FAXTU_DATABASE_PASSWORD'] %>
