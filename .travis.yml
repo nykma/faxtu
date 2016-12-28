@@ -1,0 +1,8 @@
+language: ruby
+git:
+  depth: 3
+services:
+  - postgresql
+before_script:
+  - cp .ci/database.yml config/database.yml
+  - psql -c 'CREATE DATABASE travis_ci_test;' -U postgres
