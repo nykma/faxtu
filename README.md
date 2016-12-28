@@ -7,16 +7,20 @@
 
 ```ruby
 class FaxtuReadMe
+  AUTHOR = "Nyk Ma <moe@nayuki.info>"
+  DOCKER_COMPOSE_AVAILABLE = (`which docker-compose` != '') &&
+                             (`docker-compose -v` > 'docker-compose version 1.6.0')
+
   def self.description
     "My RoR scaffold with only JSON API stuff.\n使って、どうぞ。"
   end
 
   def self.based_on
     based_on_list = {
-      ruby: File.read('.ruby-version')
+      ruby: File.read(Rails.root.join('.ruby-version'))
     }
 
-    unless DockerCompose::VERSION > '1.6.0'
+    unless DOCKER_COMPOSE_AVAILABLE
       based_on_list.merge!(
         postgres: '>= 9.6',
         redis: '>= 3.2'
@@ -26,7 +30,31 @@ class FaxtuReadMe
     based_on_list
   end
 
-  def self.components
+  def self.highlight
+    [
+      'Multi-login',
+      'Authorization',
+      'Version-friendly API',
+      'Sentry intergrated',
+      'API-blueprint based document',
+      'Reasonable Rubocop config'
+    ].join("\n")
+  end
+
+  def self.preparation
+    `git clone https://github.com/nykma/faxtu.git && cd faxtu`
+    `cp config/application.sample.yml config/application.yml`
+    `ag --nocolor -l NEED_MODIFY | xargs emacsclient -t`
+    `bundle i`
+    `docker-compose up -d` if DOCKER_COMPOSE_AVAILABLE
+    `bin/rails db:create db:schema:load`
+    `bin/rails spec`
+
+    true
+  end
+
+
+  def self.main_components
     {
       main: %w(
         rack-cors
@@ -44,18 +72,6 @@ class FaxtuReadMe
         faker
       )
     }
-  end
-
-  def self.preparation
-    `git clone https://github.com/nykma/faxtu.git && cd faxtu`
-    `cp config/application.sample.yml config/application.yml`
-    `ag NEED_MODIFY # and modify them`
-    `bundle`
-    `docker-compose up -d` if docker_compose.installed?
-    `bin/rails db:create db:migrate`
-    `bin/rails spec`
-
-    true
   end
 
   def self.license
