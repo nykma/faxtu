@@ -2,6 +2,7 @@
 
 ![Built with GH60](https://img.shields.io/badge/built%20with-GH60-yellow.svg)
 [![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](http://spacemacs.org)
+[![Build Status](https://travis-ci.org/nykma/faxtu.svg?branch=master)](https://travis-ci.org/nykma/faxtu)
 
 - - - -
 
