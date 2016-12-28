@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  has_many :logins
+
   enumerize :gender, in: {
     male: 1,
     female: 2,

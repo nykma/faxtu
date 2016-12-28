@@ -13,11 +13,11 @@ gem 'rack-cors'
 # ENV based on application.yml
 gem 'figaro'
 
-gem 'enumerize'
+gem 'cancancan' # Authorization
+gem 'devise' # Authentication
+gem 'enumerize' # Enumerize in model - expansion pack
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-
   gem 'byebug', platform: :mri
   gem 'database_cleaner'
   gem 'factory_girl_rails'
