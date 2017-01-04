@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.1'
+gem 'rails-i18n'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.19'
 # Use Puma as the app server
@@ -16,6 +18,9 @@ gem 'figaro'
 gem 'cancancan' # Authorization
 gem 'devise' # Authentication
 gem 'enumerize' # Enumerize in model - expansion pack
+
+gem 'grape' # Super API framework
+gem 'grape-entity' # Super API result constructor
 
 group :development, :test do
   gem 'byebug', platform: :mri

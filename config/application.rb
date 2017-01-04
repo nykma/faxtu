@@ -28,7 +28,15 @@ module Faxtu
     config.api_only = true
 
     # NEED_MODIFY
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Beijing'
+
+    config.i18n.available_locales = [:'zh-CN', :en]
     config.i18n.default_locale = :'zh-CN'
+
+    # Grape
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

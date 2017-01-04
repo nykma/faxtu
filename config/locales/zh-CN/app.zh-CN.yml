@@ -1,0 +1,4 @@
+zh-CN:
+  app:
+    api:
+      password_mismatch: '用户名与密码不匹配'

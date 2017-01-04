@@ -12,4 +12,16 @@ RSpec.describe Login, type: :model do
   describe 'associations' do
     it { should belong_to :user }
   end
+
+  describe 'after_initialize' do
+    it 'should generate auth token' do
+      expect(create(:login).auth_token).to be_a String
+    end
+
+    it 'should not refresh auth token when it existed' do
+      login = create(:login)
+      old_token = login.auth_token
+      expect(Login.first.auth_token).to eq old_token
+    end
+  end
 end
